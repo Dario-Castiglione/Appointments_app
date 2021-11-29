@@ -12,18 +12,25 @@ cardDown.forEach(element =>{
         event.currentTarget.parentElement.classList.toggle("card-opened")
     })
 })
-/*
+function removeAllChid(){
+    const task = document.querySelectorAll(".task")
+    const allTask = [...task]
+    allTask.forEach(element => element.remove())   
+}
+
 main.addEventListener("click", (e)=>{
     let isCompleted = "";
     if (e.target.type==="checkbox") {
-
-        const element = tasks.find(element => element.id = e.target.id)
-        if (element.completed ==="true") isCompleted = "false"
-        else {element.completed === "true"}  isCompleted = "true"
-        console.log(tasks.find(element => element.id = e.target.id))
+        const found = tasks.find(element => element.id = e.target.id)
+        console.log(found)
+        found.completed = false
+        
+        filterData(tasks) 
+        
+        
     }
 })
-*/
+
 
 
 //------------------------------------------------------------GET PRODUCT
@@ -44,6 +51,7 @@ const render = (container, array) =>{
         task.appendChild(taskP)
         task.appendChild(taskInput)        
         container.appendChild(task)
+        
     })
 
 
@@ -61,10 +69,8 @@ const getList = async () => {
     const res = await fetch(API)
     const data = await res.json();
     filterData(data) 
-    console.log(data)
     tasks = data
 }
-//console.log(data)
 getList()
 
 //---------form add
@@ -74,22 +80,16 @@ const form = document.querySelector(".add-form")
 form.addEventListener('submit', (event) =>{
     event.preventDefault();
 
-    const newTask = 
+    const newTask =  
         {
             "id": `${tasks.length + 1}`,
             "title": `${form.firstElementChild.value}`,
             "completed": false
-            }
-            console.log(newTask)
-        
+        }       
     const addTask = () => {
-    const task = document.querySelectorAll(".task")
-    const allTask = [...task]
-    allTask.forEach(element => element.remove())   
-    console.log(allTask)
+    removeAllChid()
      tasks.push(newTask)
      filterData(tasks)
-     console.log(task)
      form.firstElementChild.value="";
     }    
     
