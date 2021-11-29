@@ -6,13 +6,11 @@
 }
 
 header {
+  position: relative;
   width: 100%;
   text-align: center;
   padding: 15px 0;
   height: 10vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -21,37 +19,61 @@ header {
           align-items: center;
 }
 
+header .header-container {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  margin: 0 auto;
+}
+
+header p {
+  position: absolute;
+  right: -15px;
+  top: -5px;
+}
+
 header h1 {
   margin: 0;
   font-size: 40px;
-  color: #cdf564;
+  color: #000000;
   font-weight: 700;
 }
 
 body {
   font-family: 'Ubuntu Condensed', sans-serif;
-  background: #000000;
+  background: #ffffff;
   max-height: 100vh;
   overflow: hidden;
   padding: 0 15px;
+}
+
+input {
+  cursor: pointer;
 }
 
 main {
   height: 90vh;
 }
 
+main .completed .task p {
+  -webkit-text-decoration: line-through #fff;
+          text-decoration: line-through #fff;
+}
+
 main .card {
+  position: relative;
   color: #ffffff;
   margin: 2vh auto;
   height: 7vh;
   -webkit-transition: all 0.45s ease;
   transition: all 0.45s ease;
-  border: 2px solid #4b917d;
   overflow: hidden;
   max-width: 750px;
 }
 
 main .card .task {
+  color: #000000;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -63,9 +85,8 @@ main .card .task {
           justify-content: space-between;
   padding: 10px 15px;
   margin: 10px 10px;
-  border: 2px solid #ffffff;
   border-radius: 14px;
-  background: #6161618e;
+  background: #cacaca;
 }
 
 main .card .task p {
@@ -105,5 +126,34 @@ main .card-opened {
 main .card-opened img {
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
+}
+
+main .add textarea {
+  display: block;
+  width: 90%;
+  resize: none;
+  margin: 15px auto;
+  padding: 5px 15px;
+}
+
+main .add button {
+  border: none;
+  padding: 15px;
+  bottom: 15px;
+  background: #000000;
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+  font-size: 20px;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  color: #ffffff;
+  border: 2px solid #000000;
+  cursor: pointer;
+}
+
+main .add button:hover {
+  background: #ffffff;
+  color: #000000;
 }
 /*# sourceMappingURL=style.css.map */
