@@ -2,7 +2,7 @@
 const card = document.querySelectorAll(".card")
 const titleCard = document.querySelectorAll(".title-card")
 const main = document.querySelector("main")
-
+const wrapper = document.querySelectorAll(".wrapper")
 const cardDown = [] 
 cardDown.push(...titleCard)
 cardDown.forEach(element =>{
@@ -28,6 +28,10 @@ main.addEventListener("click", (e)=>{
 
 //------------------------------------------------------------GET PRODUCT
 const render = (container, array) =>{
+    
+
+    
+
     array.map( element => {
         const task = document.createElement("div")
         const taskP = document.createElement("p")
@@ -47,22 +51,50 @@ const render = (container, array) =>{
 const filterData = (data) => {
     let notCompletedTasks = data.filter(element => element.completed === false)
     let completedTasks = data.filter(element => element.completed === true)
-    render(card[0], notCompletedTasks)
-    render(card[1], completedTasks)
+    render(wrapper[0], notCompletedTasks)
+    render(wrapper[1], completedTasks)
     return notCompletedTasks , completedTasks
 }
 let tasks = []
 export let API = "https://jsonplaceholder.typicode.com/todos"
-const getProductList = async () => {
+const getList = async () => {
     const res = await fetch(API)
     const data = await res.json();
     filterData(data) 
+    console.log(data)
     tasks = data
 }
 //console.log(data)
-getProductList()
+getList()
 
+//---------form add
 
+const form = document.querySelector(".add-form")
 
+form.addEventListener('submit', (event) =>{
+    event.preventDefault();
+
+    const newTask = 
+        {
+            "id": `${tasks.length + 1}`,
+            "title": `${form.firstElementChild.value}`,
+            "completed": false
+            }
+            console.log(newTask)
+        
+    const addTask = () => {
+    const task = document.querySelectorAll(".task")
+    const allTask = [...task]
+    allTask.forEach(element => element.remove())   
+    console.log(allTask)
+     tasks.push(newTask)
+     filterData(tasks)
+     console.log(task)
+     form.firstElementChild.value="";
+    }    
+    
+    addTask()
+    
+});
 
 
