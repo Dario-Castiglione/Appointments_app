@@ -64,10 +64,15 @@ main{
         padding: 10px 15px;
         img{
             transform: rotate(180deg);
+            z-index: -1;
         }
     }
     .card-opened{
         height: 68vh;
-        overflow-y: scroll;
+        overflow-y: scroll;       
+        img{
+            transform: rotate(0deg);
+            }
+        
     }
 }

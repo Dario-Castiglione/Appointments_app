@@ -94,10 +94,16 @@ main .title-card {
 main .title-card img {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+  z-index: -1;
 }
 
 main .card-opened {
   height: 68vh;
   overflow-y: scroll;
+}
+
+main .card-opened img {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
 }
 /*# sourceMappingURL=style.css.map */
