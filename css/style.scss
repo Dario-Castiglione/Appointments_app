@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    h1{
+        margin:0;
+        font-size: 40px;
+        color: #cdf564;
+        font-weight: 700;
+    }
+}
+body{
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: #000000;  
+    max-height: 100vh;
+    overflow: hidden;
+    padding: 0 15px;
+}
+
+//----------------------------------------main
+main{
+    height: 90vh;
+    .card{
+    color: #ffffff;
+    margin: 2vh auto;
+    height: 7vh;
+    transition: all 0.45s ease;
+    border: 2px solid #4b917d;
+    overflow: hidden;
+    max-width: 750px;
+    .task{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 15px;
+        margin: 10px 10px;
+        border: 2px solid #ffffff;
+        border-radius: 14px;
+        background: #6161618e;
+        p{
+            width: 90%;
+        }
+    }
+      }
+    .title-card{
+        position: sticky;
+        background: #000;
+        top: 0;
+        height: 7vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 25px;
+        padding: 10px 15px;
+        img{
+            transform: rotate(180deg);
+        }
+    }
+    .card-opened{
+        height: 68vh;
+        overflow-y: scroll;
+    }
+}
