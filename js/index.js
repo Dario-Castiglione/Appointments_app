@@ -27,7 +27,6 @@ const render = (container, array) => {
     function display() {
         container.innerHTML = newArray
     }
-
     const newArray = array
         .map(
             (element) => `<div class="task">
@@ -40,11 +39,10 @@ const render = (container, array) => {
 }
 
 //--------------------------------------------------filter
-let notCompletedTasks = [];
-let completedTasks = [];
+
 const filterData = (data) => {
-    notCompletedTasks = data.filter(element => element.completed === false)
-    completedTasks = data.filter(element => element.completed === true)
+    let notCompletedTasks = data.filter(element => element.completed === false)
+    let completedTasks = data.filter(element => element.completed === true)
     render(wrapper[0], notCompletedTasks)
     render(wrapper[1], completedTasks)
     return notCompletedTasks, completedTasks
@@ -87,7 +85,6 @@ function order(array) {
         let y = 1;
         if (e.target.parentElement.parentElement.classList.contains("completed")) x = 1, y = 0;
         orderElement[y].value = orderElement[x].value
-
         sorting(select, array)
     }))
 }
@@ -117,8 +114,6 @@ else {
     filterData(tasks)
     order(tasks)
 }
-
-
 
 export {
     filterData,

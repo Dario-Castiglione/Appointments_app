@@ -13,7 +13,12 @@ a:visited {
     color: #000000;
 }
 
-
+select{
+    border-radius: 14px;
+    text-align: center;
+    padding: 1px;
+    cursor: pointer;
+}
 header {
     display: flex;
 
@@ -120,6 +125,7 @@ main {
     }
 
     .title-card {
+        user-select: none;
         cursor: pointer;
         position: sticky;
         background: #000;
