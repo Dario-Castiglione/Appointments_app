@@ -4,7 +4,14 @@
     box-sizing: border-box;
 }
  
-  
+a{
+    color: #000000;
+    text-decoration: none;
+}  
+a:visited{
+    color: #000000;
+}
+
 
 header{
     display: flex;
@@ -82,7 +89,8 @@ main{
         justify-content: space-between;
         padding: 10px 15px;
         margin: 10px 10px;
-        transition: all 1s ease-in-out;
+        //cursor: pointer;
+        transition:  background-position 1s ease-in-out, transform 0.2s ease-in-out;;
         border-radius: 14px;
         background: linear-gradient(to right, #ff4036bc 50%, #0074d983 50%);
         background-size: 210% 100%;
@@ -90,8 +98,9 @@ main{
         p{
             width: 90%;
         }
-
+        
     }
+
       }
     .title-card{
         cursor: pointer;
@@ -161,6 +170,14 @@ color: #000000;
 background: #ddddddce;
 
 }
+@keyframes disappear{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
 //-----------------------------------------------form
 
 @media (min-width:700px){
@@ -186,5 +203,10 @@ background: #ddddddce;
       ::-webkit-scrollbar-thumb:hover {
         background: #8f8f8f;
 }
+.task:hover{
+    transform: scale(1.02);
+
+    
+ }
 
 }

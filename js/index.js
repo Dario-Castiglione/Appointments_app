@@ -1,10 +1,10 @@
-//------------------------------------open
-const card = document.querySelectorAll(".card")
 const titleCard = document.querySelectorAll(".title-card")
 const main = document.querySelector("main")
 const wrapper = document.querySelectorAll(".wrapper")
 
+export let API = "https://jsonplaceholder.typicode.com/todos"
 
+//------------------------------------open card
 const cardDown = []
 cardDown.push(...titleCard)
 cardDown.forEach(element => {
@@ -15,28 +15,10 @@ cardDown.forEach(element => {
     })
 })
 
-
-
-export let API = "https://jsonplaceholder.typicode.com/todos"
-
-
 //------------------------------------------check product
-let isgoing = false
-main.addEventListener("click", (e) => {
-    if (e.target.type === "checkbox" && isgoing === false) {
-        console.log(e.target.parentElement)
-        isgoing = true
-        e.target.parentElement.style.backgroundPosition="top left"
-        const checkedEl = tasks.find(element => element.id == e.target.id)
-        if (checkedEl.completed === true) checkedEl.completed = false;
-        else{ checkedEl.completed = true}
-        setTimeout(() => {
-            filterData(tasks)
-            isgoing = false
-        }, 1000);
-    }
-})
-//------------------------------------------------------------GET PRODUCT
+import { checker } from "./checker.js" 
+checker()
+//------------------------------------------------------------RENDER
 const render = (container, array) => {
     localStorage.setItem("data",JSON.stringify(tasks))
     function display() {
@@ -53,15 +35,17 @@ const render = (container, array) => {
     display(newArray)
 
 }
+
+//--------------------------------------------------filter
+let notCompletedTasks  = [];
+let completedTasks = [];
 const filterData = (data) => {
-    let notCompletedTasks = data.filter(element => element.completed === false)
-    let completedTasks = data.filter(element => element.completed === true)
+    notCompletedTasks = data.filter(element => element.completed === false)
+    completedTasks = data.filter(element => element.completed === true)
     render(wrapper[0], notCompletedTasks)
     render(wrapper[1], completedTasks)
     return notCompletedTasks, completedTasks
 }
-
-
 
 //---------form add
 
@@ -79,15 +63,23 @@ form.addEventListener('submit', (event) => {
         sorting(orderElement[0], tasks)
         form.firstElementChild.value = "";
     }
+    form.firstElementChild.setAttribute("placeholder",`Hai aggiunto: ${form.firstElementChild.value }`)
     addTask()
 });
 //--------------------------------------order
 
 import { sorting } from "./sorting.js";
+
 const orderElement = document.querySelectorAll("select")
 
 function order(array) {
+    orderElement[0].value = orderElement[1].value = "dataD"
     orderElement.forEach(select => select.addEventListener('change', (e) => {
+        let x = 0;
+        let y = 1;
+        if (e.target.parentElement.parentElement.classList.contains("completed")) x = 1, y = 0; 
+        orderElement[y].value = orderElement[x].value
+
         sorting(select, array)
     }))
 }
@@ -101,11 +93,9 @@ window.addEventListener('resize', () => {
     main.style.height = `${height}px`
 });
 
-export { filterData, tasks }
-
 //-------------------------------------init
 let tasks = JSON.parse(localStorage.getItem("data")) || [];
-console.log(tasks)
+
 const getList = async () => {
     const res = await fetch(API)
     const data = await res.json();
@@ -116,4 +106,8 @@ const getList = async () => {
 }
 if (tasks.length < 1) getList()
 else{filterData(tasks)
-     order(tasks)}
+    order(tasks)}
+    
+    
+    
+export { filterData, tasks, main}
