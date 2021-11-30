@@ -21,11 +21,19 @@ export let API = "https://jsonplaceholder.typicode.com/todos"
 
 
 //------------------------------------------check product
+let isgoing = false
 main.addEventListener("click", (e) => {
-    let isCompleted = "";
-    if (e.target.type === "checkbox") {
+    if (e.target.type === "checkbox" && isgoing === false) {
         console.log(e.target.parentElement)
+        isgoing = true
         e.target.parentElement.style.backgroundPosition="top left"
+        const checkedEl = tasks.find(element => element.id == e.target.id)
+        if (checkedEl.completed === true) checkedEl.completed = false;
+        else{ checkedEl.completed = true}
+        setTimeout(() => {
+            filterData(tasks)
+            isgoing = false
+        }, 1000);
     }
 })
 //------------------------------------------------------------GET PRODUCT
