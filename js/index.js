@@ -3,6 +3,8 @@ const card = document.querySelectorAll(".card")
 const titleCard = document.querySelectorAll(".title-card")
 const main = document.querySelector("main")
 const wrapper = document.querySelectorAll(".wrapper")
+
+
 const cardDown = [] 
 cardDown.push(...titleCard)
 cardDown.forEach(element =>{
@@ -12,47 +14,41 @@ cardDown.forEach(element =>{
         event.currentTarget.parentElement.classList.toggle("card-opened")
     })
 })
-function removeAllChid(){
-    const task = document.querySelectorAll(".task")
-    const allTask = [...task]
-    allTask.forEach(element => element.remove())   
-}
+
 
 main.addEventListener("click", (e)=>{
     let isCompleted = "";
-    if (e.target.type==="checkbox") {
-        const found = tasks.find(element => element.id = e.target.id)
-        console.log(found)
-        found.completed = false
-        
-        filterData(tasks) 
-        
+    if (e.target.type==="checkbox") {  
+
         
     }
 })
 
-
+/*
+const newArray = array.map( (element) => {     
+   `<div class="task">
+    <p>${element.title}</p>
+    <input type="checkbox" id="${element.id}">
+    </div>`
+ 
+})*/
 
 //------------------------------------------------------------GET PRODUCT
 const render = (container, array) =>{
-    
+    function display(){
+        container.innerHTML= newArray
+    }
 
+    const newArray = array
+    .map(
+      (element) =>   `<div class="task">
+      <p>${element.title}</p>
+      <input type="checkbox" ${element.completed ? "checked" : ""} id="${element.id}">
+      </div>` 
+      ).join("")
+      display(newArray)
     
-
-    array.map( element => {
-        const task = document.createElement("div")
-        const taskP = document.createElement("p")
-        const taskInput = document.createElement("input")
-        taskP.innerText =`${element.title}`
-        taskInput.setAttribute("type", "checkbox")
-        taskInput.setAttribute("id", element.id)
-        if (element.completed === true) taskInput.setAttribute("checked",``)
-        task.classList= "task"
-        task.appendChild(taskP)
-        task.appendChild(taskInput)        
-        container.appendChild(task)
-        
-    })
+ 
 
 
 }
@@ -63,13 +59,15 @@ const filterData = (data) => {
     render(wrapper[1], completedTasks)
     return notCompletedTasks , completedTasks
 }
+
 let tasks = []
 export let API = "https://jsonplaceholder.typicode.com/todos"
 const getList = async () => {
     const res = await fetch(API)
     const data = await res.json();
-    filterData(data) 
     tasks = data
+    filterData(tasks) 
+    order(tasks)
 }
 getList()
 
@@ -87,14 +85,74 @@ form.addEventListener('submit', (event) =>{
             "completed": false
         }       
     const addTask = () => {
-    removeAllChid()
      tasks.push(newTask)
-     filterData(tasks)
+     sorting(orderElement[0],tasks)
      form.firstElementChild.value="";
     }    
     
     addTask()
     
 });
+//--------------------------------------order
+function orderByName(a, b) {
+    if (a.title < b.title) {
+        return -1
+    }
+    if (a.title > b.title) {
+        return 1;
+    }
+    return 0;
+}
+function orderById(a, b) {
+    if (a.id < b.id) {
+        return -1
+    }
+    if (a.id > b.id) {
+        return 1;
+    }
+    return 0;
+}
+function orderByIdRev(a, b) {
+    if (b.id < a.id) {
+        return -1
+    }
+    if (b.id > a.id) {
+        return 1;
+    }
+    return 0;
+}
+function sorting(orderElement,array){
+    switch (orderElement.value) {
+        case  "alfabetico":
+            array.sort(orderByName)
+                break;
+        case  "dataC":
+            array.sort(orderById)
+                break;        
+        case  "dataD":
+            array.sort(orderByIdRev)
+                break;        
+            default:
+                break;
+        }
+        filterData(tasks)
+}
+const orderElement = document.querySelectorAll("select")
+function order(array){
+      
+    orderElement.forEach(select => select.addEventListener('change', (e) => {
+        console.log("ciao")
+        sorting(select,array)
+    }))
+}
+
+//--------------------------------------resize
+
+let height = window.innerHeight /100 * 90;
+main.style.height=`${height}px`
+window.addEventListener('resize', () => {
+    height = window.innerHeight /100 * 90;
+    main.style.height=`${height}px`
+  });
 
 

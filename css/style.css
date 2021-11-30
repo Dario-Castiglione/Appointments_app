@@ -57,10 +57,23 @@ input {
 }
 
 main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   height: 90vh;
+  max-width: 750px;
+  margin: 0 auto;
 }
 
-main .completed .task p {
+main .card.completed .task {
+  background: #ff4036bc;
+}
+
+main .card.completed .task p {
   -webkit-text-decoration: line-through #fff;
           text-decoration: line-through #fff;
 }
@@ -68,12 +81,12 @@ main .completed .task p {
 main .card {
   position: relative;
   color: #ffffff;
-  margin: 2vh auto;
+  margin: 1vh auto;
   height: 7vh;
   -webkit-transition: all 0.45s ease;
   transition: all 0.45s ease;
   overflow: hidden;
-  max-width: 750px;
+  width: 100%;
 }
 
 main .card .task {
@@ -90,7 +103,7 @@ main .card .task {
   padding: 10px 15px;
   margin: 10px 10px;
   border-radius: 14px;
-  background: #cacaca;
+  background: #0074d983;
 }
 
 main .card .task p {
@@ -163,6 +176,19 @@ main .add button {
 main .add button:hover {
   background: #ffffff;
   color: #000000;
+}
+
+/* .wrapper{
+   position: relativ
+} */
+.card-nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 6.90vh;
+  text-align: end;
+  padding: 3px 15px;
+  color: #000000;
+  background: #ddddddce;
 }
 
 @media (min-width: 700px) {
