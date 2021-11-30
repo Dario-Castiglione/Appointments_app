@@ -111,6 +111,7 @@ main .card .task p {
 }
 
 main .title-card {
+  cursor: pointer;
   position: -webkit-sticky;
   position: sticky;
   background: #000;
