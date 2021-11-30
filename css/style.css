@@ -61,10 +61,6 @@ body {
   padding: 0 15px;
 }
 
-input {
-  cursor: pointer;
-}
-
 main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -127,6 +123,10 @@ main .card .task {
 
 main .card .task p {
   width: 90%;
+}
+
+main .card .task input {
+  cursor: pointer;
 }
 
 main .title-card {
@@ -249,10 +249,6 @@ main .add button:hover {
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #8f8f8f;
-  }
-  .task:hover {
-    -webkit-transform: scale(1.02);
-            transform: scale(1.02);
   }
 }
 /*# sourceMappingURL=style.css.map */

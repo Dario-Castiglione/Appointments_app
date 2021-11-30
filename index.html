@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,61 +13,63 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>Appointments App</title>
 </head>
+
 <body>
     <header>
         <div class="header-container">
-            <p>Developed By <a href="https://www.linkedin.com/in/dario-castiglione-26230b180/" target="_blank" rel="noopener noreferrer">Dario Castiglione</a></p>
+            <p>Developed By <a href="https://www.linkedin.com/in/dario-castiglione-26230b180/" target="_blank"
+                    rel="noopener noreferrer">Dario Castiglione</a></p>
             <h1>
                 Appointments App
             </h1>
 
         </div>
     </header>
- 
+
     <main>
         <div class="card card-opened">
-            <div class="title-card" >
+            <div class="title-card">
                 <p>Da Completare</p>
-                <img class="dropimg" id="daCompletare" src="./img/up-arrow-svgrepo-com (2).svg" width="40" height="40" alt="arrow">
+                <img class="dropimg" id="daCompletare" src="./img/up-arrow.svg" width="40" height="40" alt="arrow">
             </div>
             <div class="card-nav">
                 <label for="order">Ordina per: </label>
-                <select  id="order">
+                <select>
                     <option value="">Scegli ordine</option>
                     <option value="dataC">Meno Recente</option>
                     <option value="dataD">Più Recente</option>
                     <option value="alfabetico">Alfabetico</option>
                 </select>
-                </div>
+            </div>
             <div class="wrapper"></div>
 
         </div>
         <div class="card completed">
-            <div class="title-card" >
+            <div class="title-card">
                 <p>Completati</p>
-                <img class="dropimg" id="completati" src="./img/up-arrow-svgrepo-com (2).svg" width="40" height="40" alt="arrow">
+                <img class="dropimg" id="completati" src="./img/up-arrow.svg" width="40" height="40" alt="arrow">
             </div>
-                <div class="card-nav">
-                    <label for="order">Ordina per: </label>
-                    <select  id="order">
-                        <option value="">Scegli ordine</option>
-                        <option value="dataC">Meno Recente</option>
-                        <option value="dataD">Più Recente</option>
-                        <option value="alfabetico">Alfabetico</option>
-                    </select>
+            <div class="card-nav">
+                <label for="order">Ordina per: </label>
+                <select>
+                    <option value="">Scegli ordine</option>
+                    <option value="dataC">Meno Recente</option>
+                    <option value="dataD">Più Recente</option>
+                    <option value="alfabetico">Alfabetico</option>
+                </select>
             </div>
             <div class="wrapper"></div>
         </div>
         <div class="card add ">
-            <div class="title-card" >
+            <div class="title-card">
                 <p>Aggiungi</p>
-                <img class="dropimg" id="aggiungi" src="./img/up-arrow-svgrepo-com (2).svg" width="40" height="40" alt="arrow">
+                <img class="dropimg" id="aggiungi" src="./img/up-arrow.svg" width="40" height="40" alt="arrow">
 
             </div>
-            
-            
+
+
             <form class="add-form">
-                    <textarea name="addTask" placeholder="Aggiungi qualcosa" id="" cols="50" rows="5"></textarea>
+                <textarea name="addTask" placeholder="Aggiungi qualcosa" cols="50" rows="5"></textarea>
                 <button>Aggiungi</button>
             </form>
         </div>
@@ -77,4 +80,5 @@
 
     <script src="./js/index.js" type="module"></script>
 </body>
+
 </html>

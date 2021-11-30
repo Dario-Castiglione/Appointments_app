@@ -16,11 +16,14 @@ cardDown.forEach(element => {
 })
 
 //------------------------------------------check product
-import { checker } from "./checker.js" 
+import {
+    checker
+} from "./checker.js"
 checker()
 //------------------------------------------------------------RENDER
 const render = (container, array) => {
-    localStorage.setItem("data",JSON.stringify(tasks))
+    localStorage.setItem("data", JSON.stringify(tasks))
+
     function display() {
         container.innerHTML = newArray
     }
@@ -37,7 +40,7 @@ const render = (container, array) => {
 }
 
 //--------------------------------------------------filter
-let notCompletedTasks  = [];
+let notCompletedTasks = [];
 let completedTasks = [];
 const filterData = (data) => {
     notCompletedTasks = data.filter(element => element.completed === false)
@@ -53,6 +56,9 @@ const form = document.querySelector(".add-form")
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
+
+    if (form.firstElementChild.value != false)
+    {
     const newTask = {
         "id": `${tasks.length + 1}`,
         "title": `${form.firstElementChild.value}`,
@@ -63,12 +69,14 @@ form.addEventListener('submit', (event) => {
         sorting(orderElement[0], tasks)
         form.firstElementChild.value = "";
     }
-    form.firstElementChild.setAttribute("placeholder",`Hai aggiunto: ${form.firstElementChild.value }`)
-    addTask()
+    form.firstElementChild.setAttribute("placeholder", `Hai aggiunto: ${form.firstElementChild.value }`)
+    addTask()}
 });
 //--------------------------------------order
 
-import { sorting } from "./sorting.js";
+import {
+    sorting
+} from "./sorting.js";
 
 const orderElement = document.querySelectorAll("select")
 
@@ -77,7 +85,7 @@ function order(array) {
     orderElement.forEach(select => select.addEventListener('change', (e) => {
         let x = 0;
         let y = 1;
-        if (e.target.parentElement.parentElement.classList.contains("completed")) x = 1, y = 0; 
+        if (e.target.parentElement.parentElement.classList.contains("completed")) x = 1, y = 0;
         orderElement[y].value = orderElement[x].value
 
         sorting(select, array)
@@ -102,12 +110,18 @@ const getList = async () => {
     tasks = data
     filterData(tasks)
     order(tasks)
-    localStorage.setItem("data",JSON.stringify(tasks))
+    localStorage.setItem("data", JSON.stringify(tasks))
 }
 if (tasks.length < 1) getList()
-else{filterData(tasks)
-    order(tasks)}
-    
-    
-    
-export { filterData, tasks, main}
+else {
+    filterData(tasks)
+    order(tasks)
+}
+
+
+
+export {
+    filterData,
+    tasks,
+    main
+}
