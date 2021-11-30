@@ -17,17 +17,20 @@ cardDown.forEach(element => {
 
 
 
-//-----------------------------------------------------------LOCAL STORAGE
-const taskino = JSON.parse(localStorage.getItem("taskini")) || "";
-console.log(taskino)
+export let API = "https://jsonplaceholder.typicode.com/todos"
+
+
 //------------------------------------------check product
 main.addEventListener("click", (e) => {
     let isCompleted = "";
     if (e.target.type === "checkbox") {
+        console.log(e.target.parentElement)
+        e.target.parentElement.style.backgroundPosition="top left"
     }
 })
 //------------------------------------------------------------GET PRODUCT
 const render = (container, array) => {
+    localStorage.setItem("data",JSON.stringify(tasks))
     function display() {
         container.innerHTML = newArray
     }
@@ -50,16 +53,7 @@ const filterData = (data) => {
     return notCompletedTasks, completedTasks
 }
 
-let tasks = []
-export let API = "https://jsonplaceholder.typicode.com/todos"
-const getList = async () => {
-    const res = await fetch(API)
-    const data = await res.json();
-    tasks = data
-    filterData(tasks)
-    order(tasks)
-}
-getList()
+
 
 //---------form add
 
@@ -100,3 +94,18 @@ window.addEventListener('resize', () => {
 });
 
 export { filterData, tasks }
+
+//-------------------------------------init
+let tasks = JSON.parse(localStorage.getItem("data")) || [];
+console.log(tasks)
+const getList = async () => {
+    const res = await fetch(API)
+    const data = await res.json();
+    tasks = data
+    filterData(tasks)
+    order(tasks)
+    localStorage.setItem("data",JSON.stringify(tasks))
+}
+if (tasks.length < 1) getList()
+else{filterData(tasks)
+     order(tasks)}

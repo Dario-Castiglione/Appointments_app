@@ -70,7 +70,10 @@ main {
 }
 
 main .card.completed .task {
-  background: #ff4036bc;
+  background: -webkit-gradient(linear, left top, right top, color-stop(50%, #0074d983), color-stop(50%, #ff4036bc));
+  background: linear-gradient(to right, #0074d983 50%, #ff4036bc 50%);
+  background-size: 210% 100%;
+  background-position: top right;
 }
 
 main .card.completed .task p {
@@ -102,8 +105,13 @@ main .card .task {
           justify-content: space-between;
   padding: 10px 15px;
   margin: 10px 10px;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
   border-radius: 14px;
-  background: #0074d983;
+  background: -webkit-gradient(linear, left top, right top, color-stop(50%, #ff4036bc), color-stop(50%, #0074d983));
+  background: linear-gradient(to right, #ff4036bc 50%, #0074d983 50%);
+  background-size: 210% 100%;
+  background-position: top right;
 }
 
 main .card .task p {
