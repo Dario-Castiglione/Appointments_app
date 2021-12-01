@@ -14,20 +14,20 @@ function orderByName(a, b) {
 }
 
 function orderById(a, b) {
-    if (a.id < b.id) {
+    if (a.date < b.date) {
         return -1
     }
-    if (a.id > b.id) {
+    if (a.date > b.date) {
         return 1;
     }
     return 0;
 }
 
 function orderByIdRev(a, b) {
-    if (b.id < a.id) {
+    if (b.date < a.date) {
         return -1
     }
-    if (b.id > a.id) {
+    if (b.date > a.date) {
         return 1;
     }
     return 0;
@@ -46,5 +46,5 @@ export function sorting(orderElement, array) {
         default:
             break;
     }
-    filterData(tasks)
+    filterData(array)
 }

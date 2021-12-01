@@ -27,13 +27,18 @@ const render = (container, array) => {
     function display() {
         container.innerHTML = newArray
     }
+   
     const newArray = array
         .map(
             (element) => `<div class="task">
       <p>${element.title}</p>
+      <div class="input">
+      <span>${element.date}</span>
       <input type="checkbox" ${element.completed ? "checked" : ""} id="${element.id}">
+      </div>
       </div>`
         ).join("")
+        
     display(newArray)
 
 }
@@ -57,12 +62,17 @@ form.addEventListener('submit', (event) => {
 
     if (form.firstElementChild.value != false)
     {
+    const date = document.querySelector("form input")
+
     const newTask = {
         "id": `${tasks.length + 1}`,
         "title": `${form.firstElementChild.value}`,
-        "completed": false
+        "completed": false,
+        "date":date.value
     }
+   
     const addTask = () => {
+        
         tasks.push(newTask)
         sorting(orderElement[0], tasks)
         form.firstElementChild.value = "";
@@ -79,7 +89,7 @@ import {
 const orderElement = document.querySelectorAll("select")
 
 function order(array) {
-    orderElement[0].value = orderElement[1].value = "dataD"
+   
     orderElement.forEach(select => select.addEventListener('change', (e) => {
         let x = 0;
         let y = 1;
@@ -97,7 +107,19 @@ window.addEventListener('resize', () => {
     height = window.innerHeight / 100 * 90;
     main.style.height = `${height}px`
 });
+//-----------------------------------SET RANDOM DATE
 
+function setRandomDate(tasks){
+
+    tasks.forEach(element=>{ 
+        element.date =`2021-12-${Math.floor(Math.random() * 10) + 10}`
+    }
+    
+        )
+        filterData(tasks)
+        order(tasks)
+        localStorage.setItem("data", JSON.stringify(tasks))
+}
 //-------------------------------------init
 let tasks = JSON.parse(localStorage.getItem("data")) || [];
 
@@ -105,9 +127,7 @@ const getList = async () => {
     const res = await fetch(API)
     const data = await res.json();
     tasks = data
-    filterData(tasks)
-    order(tasks)
-    localStorage.setItem("data", JSON.stringify(tasks))
+    setRandomDate(tasks)
 }
 if (tasks.length < 1) getList()
 else {

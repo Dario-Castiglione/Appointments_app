@@ -117,10 +117,11 @@ main .card .task {
           justify-content: space-between;
   padding: 10px 15px;
   margin: 10px 10px;
-  -webkit-transition: background-position 1s ease-in-out, -webkit-transform 0.2s ease-in-out;
-  transition: background-position 1s ease-in-out, -webkit-transform 0.2s ease-in-out;
-  transition: background-position 1s ease-in-out, transform 0.2s ease-in-out;
-  transition: background-position 1s ease-in-out, transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  cursor: pointer;
+  -webkit-transition: background-position 1s ease-in-out, padding 0.35s ease,margin 0.35s ease, -webkit-box-shadow 0.35s ease;
+  transition: background-position 1s ease-in-out, padding 0.35s ease,margin 0.35s ease, -webkit-box-shadow 0.35s ease;
+  transition: background-position 1s ease-in-out, padding 0.35s ease,margin 0.35s ease, box-shadow 0.35s ease;
+  transition: background-position 1s ease-in-out, padding 0.35s ease,margin 0.35s ease, box-shadow 0.35s ease, -webkit-box-shadow 0.35s ease;
   border-radius: 14px;
   background: -webkit-gradient(linear, left top, right top, color-stop(50%, #ff4036bc), color-stop(50%, #0074d983));
   background: linear-gradient(to right, #ff4036bc 50%, #0074d983 50%);
@@ -129,11 +130,38 @@ main .card .task {
 }
 
 main .card .task p {
-  width: 90%;
+  width: 70%;
+  word-break: break-all;
+  padding-right: 5px;
+  -webkit-transition: all 0.55s ease;
+  transition: all 0.55s ease;
 }
 
-main .card .task input {
+main .card .task .input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 30%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border-left: 1px solid #000000;
+}
+
+main .card .task .input input[type="checkbox"] {
   cursor: pointer;
+}
+
+main .task.opened-task {
+  padding: 20px 5px;
+  margin: 20px 10px;
+  -webkit-box-shadow: 1px 10px 10px #000000;
+          box-shadow: 1px 10px 10px #000000;
 }
 
 main .title-card {
@@ -178,6 +206,11 @@ main .card-opened img {
 
 main .add {
   overflow: hidden;
+}
+
+main .add input {
+  display: block;
+  margin: 0 auto;
 }
 
 main .add textarea {

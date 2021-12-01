@@ -79,6 +79,7 @@ main {
             background: linear-gradient(to right, #0074d983 50%, #ff4036bc 50%);
             background-size: 210% 100%;
             background-position: top right;
+            
 
             p {
                 text-decoration: line-through #fff;
@@ -90,14 +91,11 @@ main {
     .card {
         position: relative;
         color: #ffffff;
-        //background: #000000;
         margin: 1vh auto;
         height: 7vh;
         transition: all 0.45s ease;
-        //border: 2px solid #000000;
         overflow: hidden;
         width: 100%;
-
         .task {
             color: #000000;
             display: flex;
@@ -105,24 +103,50 @@ main {
             justify-content: space-between;
             padding: 10px 15px;
             margin: 10px 10px;
-            //cursor: pointer;
-            transition: background-position 1s ease-in-out, transform 0.2s ease-in-out;
-            ;
+            cursor: pointer;
+            transition: background-position 1s ease-in-out, padding 0.35s ease,margin 0.35s ease,
+            box-shadow 0.35s ease;
             border-radius: 14px;
             background: linear-gradient(to right, #ff4036bc 50%, #0074d983 50%);
             background-size: 210% 100%;
             background-position: top right;
+           
 
             p {
-                width: 90%;
+                width: 70%;
+                word-break: break-all;
+                padding-right: 5px;
+                transition: all 0.55s ease;
             }
-            input{
-                cursor: pointer;
+            .input{
+                display: flex;
+                align-items: center;
+                width: 30%;
+                justify-content: space-evenly;
+                flex-wrap: wrap;
+                border-left: 1px solid #000000;
+                input[type="checkbox"]{
+                    cursor: pointer;
+                }
+
             }
 
+
+            
         }
-
+        
     }
+    //----------qui
+    .task.opened-task{
+        padding: 20px 5px;
+        margin: 20px 10px;
+        box-shadow: 1px 10px 10px #000000;
+        
+    
+    }
+
+  
+    
 
     .title-card {
         user-select: none;
@@ -155,6 +179,11 @@ main {
 
     .add {
         overflow: hidden;
+        
+        input{
+            display: block;
+            margin: 0 auto;
+        }
 
         textarea {
             display: block;
@@ -186,6 +215,7 @@ main {
 
         }
     }
+ 
 }
 
 /* .wrapper{
