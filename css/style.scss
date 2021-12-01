@@ -21,6 +21,14 @@ select{
 }
 header {
     display: flex;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 15px;
+    height: 5vh;
+    justify-content: center;
+    align-items: center;
 
     .header-container {
         width: fit-content;
@@ -29,22 +37,10 @@ header {
         margin: 0 auto;
     }
 
-    position: relative;
-    width: 100%;
-    text-align: center;
-    padding: 15px 0;
-    margin-top: 15px;
-    height: 5vh;
-    //display: flex;
-    justify-content: center;
-    align-items: center;
-
     p {
         position: absolute;
         right: -15px;
         top: -5px;
-        //transform: rotatez(10deg);
-
     }
 
     h1 {
@@ -62,8 +58,6 @@ body {
     overflow: hidden;
     padding: 0 15px;
 }
-
-
 
 
 //----------------------------------------main
@@ -84,7 +78,6 @@ main {
             p {
                 text-decoration: line-through #fff;
             }
-
         }
     }
 
@@ -111,7 +104,6 @@ main {
             background-size: 210% 100%;
             background-position: top right;
            
-
             p {
                 width: 70%;
                 word-break: break-all;
@@ -125,28 +117,22 @@ main {
                 justify-content: space-evenly;
                 flex-wrap: wrap;
                 border-left: 1px solid #000000;
-                input[type="checkbox"]{
+                height: 100%;
+                span{
+                    cursor: default;
+                }
+                input{
                     cursor: pointer;
                 }
-
-            }
-
-
-            
-        }
-        
+                
+            }    
+        }    
     }
-    //----------qui
     .task.opened-task{
         padding: 20px 5px;
         margin: 20px 10px;
         box-shadow: 1px 10px 10px #000000;
-        
-    
     }
-
-  
-    
 
     .title-card {
         user-select: none;
@@ -218,13 +204,9 @@ main {
  
 }
 
-/* .wrapper{
-   position: relativ
-} */
 .card-nav {
     position: sticky;
     top: 6.90vh;
-    //border: 1px solid red;
     text-align: end;
     padding: 3px 15px;
     color: #000000;
@@ -232,17 +214,7 @@ main {
 
 }
 
-@keyframes disappear {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
-//-----------------------------------------------form
+//------------------------------
 
 @media (min-width:700px) {
 

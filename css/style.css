@@ -151,9 +151,14 @@ main .card .task .input {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   border-left: 1px solid #000000;
+  height: 100%;
 }
 
-main .card .task .input input[type="checkbox"] {
+main .card .task .input span {
+  cursor: default;
+}
+
+main .card .task .input input {
   cursor: pointer;
 }
 
@@ -242,9 +247,6 @@ main .add button:hover {
   color: #000000;
 }
 
-/* .wrapper{
-   position: relativ
-} */
 .card-nav {
   position: -webkit-sticky;
   position: sticky;
@@ -253,24 +255,6 @@ main .add button:hover {
   padding: 3px 15px;
   color: #000000;
   background: #ddddddce;
-}
-
-@-webkit-keyframes disappear {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes disappear {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
 }
 
 @media (min-width: 700px) {

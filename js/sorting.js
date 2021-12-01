@@ -46,5 +46,6 @@ export function sorting(orderElement, array) {
         default:
             break;
     }
+    
     filterData(array)
 }

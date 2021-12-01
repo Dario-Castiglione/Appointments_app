@@ -5,6 +5,8 @@ const wrapper = document.querySelectorAll(".wrapper")
 export let API = "https://jsonplaceholder.typicode.com/todos"
 
 //------------------------------------open card
+
+
 const cardDown = []
 cardDown.push(...titleCard)
 cardDown.forEach(element => {
@@ -16,18 +18,22 @@ cardDown.forEach(element => {
 })
 
 //------------------------------------------check product
+
 import {
     checker
 } from "./checker.js"
 checker()
+
 //------------------------------------------------------------RENDER
+
 const render = (container, array) => {
     localStorage.setItem("data", JSON.stringify(tasks))
-
+    
     function display() {
         container.innerHTML = newArray
     }
-   
+
+
     const newArray = array
         .map(
             (element) => `<div class="task">
@@ -38,19 +44,19 @@ const render = (container, array) => {
       </div>
       </div>`
         ).join("")
-        
-    display(newArray)
 
+    display(newArray)
 }
 
 //--------------------------------------------------filter
 
 const filterData = (data) => {
+    console.log("ciao")
+    
     let notCompletedTasks = data.filter(element => element.completed === false)
     let completedTasks = data.filter(element => element.completed === true)
     render(wrapper[0], notCompletedTasks)
     render(wrapper[1], completedTasks)
-    return notCompletedTasks, completedTasks
 }
 
 //---------form add
@@ -60,26 +66,27 @@ const form = document.querySelector(".add-form")
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    if (form.firstElementChild.value != false)
-    {
-    const date = document.querySelector("form input")
+    if (form.firstElementChild.value != false) {
+        const date = document.querySelector("form input")
 
-    const newTask = {
-        "id": `${tasks.length + 1}`,
-        "title": `${form.firstElementChild.value}`,
-        "completed": false,
-        "date":date.value
+        const newTask = {
+            "id": `${tasks.length + 1}`,
+            "title": `${form.firstElementChild.value}`,
+            "completed": false,
+            "date": date.value
+        }
+
+        const addTask = () => {
+
+            tasks.push(newTask)
+            sorting(orderElement[0], tasks)
+            form.firstElementChild.value = "";
+        }
+        form.firstElementChild.setAttribute("placeholder", `Hai aggiunto: ${form.firstElementChild.value }`)
+        addTask()
     }
-   
-    const addTask = () => {
-        
-        tasks.push(newTask)
-        sorting(orderElement[0], tasks)
-        form.firstElementChild.value = "";
-    }
-    form.firstElementChild.setAttribute("placeholder", `Hai aggiunto: ${form.firstElementChild.value }`)
-    addTask()}
 });
+
 //--------------------------------------order
 
 import {
@@ -89,7 +96,7 @@ import {
 const orderElement = document.querySelectorAll("select")
 
 function order(array) {
-   
+
     orderElement.forEach(select => select.addEventListener('change', (e) => {
         let x = 0;
         let y = 1;
@@ -107,21 +114,25 @@ window.addEventListener('resize', () => {
     height = window.innerHeight / 100 * 90;
     main.style.height = `${height}px`
 });
+
 //-----------------------------------SET RANDOM DATE
 
-function setRandomDate(tasks){
+function setRandomDate(tasks) {
 
-    tasks.forEach(element=>{ 
-        element.date =`2021-12-${Math.floor(Math.random() * 10) + 10}`
-    }
-    
-        )
-        filterData(tasks)
-        order(tasks)
-        localStorage.setItem("data", JSON.stringify(tasks))
+    tasks.map(element => {
+            element.date = `2021-12-${Math.floor(Math.random() * 10) + 10}`
+        }
+    )
+    sorting(orderElement[0],tasks)
+    order(tasks)
+    localStorage.setItem("data", JSON.stringify(tasks))
 }
+
 //-------------------------------------init
+
 let tasks = JSON.parse(localStorage.getItem("data")) || [];
+
+orderElement[0].value = orderElement[1].value = "dataC"
 
 const getList = async () => {
     const res = await fetch(API)
@@ -131,8 +142,10 @@ const getList = async () => {
 }
 if (tasks.length < 1) getList()
 else {
-    filterData(tasks)
+    
+    sorting(orderElement[0],tasks)
     order(tasks)
+    
 }
 
 export {
