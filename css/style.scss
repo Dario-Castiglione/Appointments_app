@@ -65,7 +65,7 @@ main {
     display: flex;
     flex-direction: column;
     height: 90vh;
-    max-width: 750px;
+    max-width: 950px;
     margin: 0 auto;
 
     .card.completed {
@@ -97,8 +97,8 @@ main {
             padding: 10px 15px;
             margin: 10px 10px;
             cursor: pointer;
-            transition: background-position 1s ease-in-out, padding 0.35s ease,margin 0.35s ease,
-            box-shadow 0.35s ease;
+            transition: background-position 1s ease-in-out, padding 0.35s ease, margin 0.35s ease, padding 0.35s ease,
+            box-shadow 0.35s ease; 
             border-radius: 14px;
             background: linear-gradient(to right, #ff4036bc 50%, #0074d983 50%);
             background-size: 210% 100%;
@@ -129,9 +129,9 @@ main {
         }    
     }
     .task.opened-task{
-        padding: 20px 5px;
-        margin: 20px 10px;
-        box-shadow: 1px 10px 10px #000000;
+        padding: 20px 20px;
+        margin: 20px 5px;
+        box-shadow: 1px 7px 7px #000000;
     }
 
     .title-card {

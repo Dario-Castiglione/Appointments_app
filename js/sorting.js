@@ -1,51 +1,28 @@
-import {
-    filterData,
-    tasks
-} from "./index.js"
+import { filterData} from "./index.js"
 
-function orderByName(a, b) {
-    if (a.title < b.title) {
-        return -1
-    }
-    if (a.title > b.title) {
-        return 1;
-    }
-    return 0;
-}
-
-function orderById(a, b) {
-    if (a.date < b.date) {
-        return -1
-    }
-    if (a.date > b.date) {
-        return 1;
-    }
-    return 0;
-}
-
-function orderByIdRev(a, b) {
-    if (b.date < a.date) {
-        return -1
-    }
-    if (b.date > a.date) {
-        return 1;
-    }
-    return 0;
-}
 export function sorting(orderElement, array) {
     switch (orderElement.value) {
         case "alfabetico":
-            array.sort(orderByName)
+            array.sort(function (a, b) {
+                const titleA = a.title.toUpperCase();
+                const titleB = b.title.toUpperCase();
+                if (titleA < titleB){
+                    return a.title.localeCompare(b.title);
+                }
+              });
             break;
         case "dataC":
-            array.sort(orderById)
+            array.sort(function (a, b) {
+                return a.date.localeCompare(b.date);
+              });
             break;
         case "dataD":
-            array.sort(orderByIdRev)
+            array.sort(function (a, b) {
+                return b.date.localeCompare(a.date);
+              });
             break;
         default:
             break;
     }
-    
     filterData(array)
 }

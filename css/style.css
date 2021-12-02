@@ -77,7 +77,7 @@ main {
       -ms-flex-direction: column;
           flex-direction: column;
   height: 90vh;
-  max-width: 750px;
+  max-width: 950px;
   margin: 0 auto;
 }
 
@@ -118,10 +118,10 @@ main .card .task {
   padding: 10px 15px;
   margin: 10px 10px;
   cursor: pointer;
-  -webkit-transition: background-position 1s ease-in-out, padding 0.35s ease,margin 0.35s ease, -webkit-box-shadow 0.35s ease;
-  transition: background-position 1s ease-in-out, padding 0.35s ease,margin 0.35s ease, -webkit-box-shadow 0.35s ease;
-  transition: background-position 1s ease-in-out, padding 0.35s ease,margin 0.35s ease, box-shadow 0.35s ease;
-  transition: background-position 1s ease-in-out, padding 0.35s ease,margin 0.35s ease, box-shadow 0.35s ease, -webkit-box-shadow 0.35s ease;
+  -webkit-transition: background-position 1s ease-in-out, padding 0.35s ease, margin 0.35s ease, padding 0.35s ease, -webkit-box-shadow 0.35s ease;
+  transition: background-position 1s ease-in-out, padding 0.35s ease, margin 0.35s ease, padding 0.35s ease, -webkit-box-shadow 0.35s ease;
+  transition: background-position 1s ease-in-out, padding 0.35s ease, margin 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease;
+  transition: background-position 1s ease-in-out, padding 0.35s ease, margin 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease, -webkit-box-shadow 0.35s ease;
   border-radius: 14px;
   background: -webkit-gradient(linear, left top, right top, color-stop(50%, #ff4036bc), color-stop(50%, #0074d983));
   background: linear-gradient(to right, #ff4036bc 50%, #0074d983 50%);
@@ -163,10 +163,10 @@ main .card .task .input input {
 }
 
 main .task.opened-task {
-  padding: 20px 5px;
-  margin: 20px 10px;
-  -webkit-box-shadow: 1px 10px 10px #000000;
-          box-shadow: 1px 10px 10px #000000;
+  padding: 20px 20px;
+  margin: 20px 5px;
+  -webkit-box-shadow: 1px 7px 7px #000000;
+          box-shadow: 1px 7px 7px #000000;
 }
 
 main .title-card {
